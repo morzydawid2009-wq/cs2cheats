@@ -121,30 +121,72 @@ button:hover {
         <div class="card">
             <h2>Basic</h2>
             <p class="price">$9.99</p>
-            <button class="buy">Buy</button>
+            <button class="buy" onclick="openBuy('Basic', '$9.99')">Buy</button>
         </div>
 
         <div class="card">
             <h2>Pro</h2>
             <p class="price">$19.99</p>
-            <button class="buy">Buy</button>
+            <button class="buy" onclick="openBuy('Pro', '$19.99')">Buy</button>
         </div>
 
         <div class="card">
             <h2>Premium</h2>
             <p class="price">$29.99</p>
-            <button class="buy">Buy</button>
+            <button class="buy" onclick="openBuy('Premium', '$29.99')">Buy</button>
         </div>
 
     </div>
 </div>
+<div id="buyBox" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+">
 
+    <div style="
+    background:#111;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    width:300px;
+    ">
+
+        <h2 id="productName"></h2>
+        <p id="productPrice"></p>
+
+        <button onclick="buyNow()">Buy Now</button>
+        <br><br>
+        <button onclick="closeBuy()">Cancel</button>
+
+    </div>
+</div>
 <script>
 function showPage(page) {
     document.getElementById("home").classList.remove("active");
     document.getElementById("store").classList.remove("active");
 
     document.getElementById(page).classList.add("active");
+}
+</script><script>
+function openBuy(name, price) {
+    document.getElementById("buyBox").style.display = "flex";
+    document.getElementById("productName").innerText = name;
+    document.getElementById("productPrice").innerText = price;
+}
+
+function closeBuy() {
+    document.getElementById("buyBox").style.display = "none";
+}
+
+function buyNow() {
+    alert("Purchase successful (fake)");
 }
 </script>
 
