@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SourceSense</title>
+<title>CS2 Store</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial;
-    background: black;
+    background: #0d0d0d;
     color: white;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
     display: flex;
     justify-content: space-between;
@@ -19,37 +19,82 @@ nav {
     background: #111;
 }
 
-/* LEWA */
+/* LEFT */
 .left {
     display: flex;
     gap: 15px;
 }
 
-/* PRAWA */
-.right {
-    display: flex;
-}
+/* RIGHT */
+.right {}
 
-/* PRZYCISKI */
+/* BUTTONY */
 button {
     padding: 10px 15px;
     border: none;
-    border-radius: 10px;
-    background: #00c3ff;
+    border-radius: 12px;
+    background: #1a1a1a;
     color: white;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00c3ff;
+}
+
+/* DISCORD */
+.discord {
+    background: linear-gradient(135deg, #5865F2, #404EED);
+}
+
+.discord:hover {
+    box-shadow: 0 0 15px #5865F2;
 }
 
 /* STRONY */
 #home, #store {
     display: none;
-    padding: 50px;
+    padding: 60px 20px;
     text-align: center;
 }
 
 .active {
     display: block;
 }
+
+/* STORE */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #151515;
+    padding: 25px;
+    border-radius: 20px;
+    width: 240px;
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 20px rgba(0,195,255,0.5);
+}
+
+.price {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.buy {
+    background: linear-gradient(135deg, #00c3ff, #0066ff);
+    border-radius: 10px;
+}
+
 </style>
 
 </head>
@@ -63,7 +108,7 @@ button {
     </div>
 
     <div class="right">
-        <button onclick="window.open('https://discord.gg/uBkNEQKHX', '_blank')">
+        <button class="discord" onclick="window.open('https://discord.gg/uBkNEQKHX')">
             Discord
         </button>
     </div>
@@ -71,15 +116,35 @@ button {
 
 <!-- HOME -->
 <div id="home" class="active">
-    <h1>HOME</h1>
-    <p>Tu nie ma produktów</p>
+    <h1>CS2 Premium Cheats</h1>
+    <p>Undetected • Smooth • High Performance</p>
 </div>
 
 <!-- STORE -->
 <div id="store">
-    <h1>STORE</h1>
-    <p>Basic - $9.99</p>
-    <p>Pro - $19.99</p>
+    <h1>Our Products</h1>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>Basic</h2>
+            <p class="price">$9.99</p>
+            <button class="buy">Buy</button>
+        </div>
+
+        <div class="card">
+            <h2>Pro</h2>
+            <p class="price">$19.99</p>
+            <button class="buy">Buy</button>
+        </div>
+
+        <div class="card">
+            <h2>Premium</h2>
+            <p class="price">$29.99</p>
+            <button class="buy">Buy</button>
+        </div>
+
+    </div>
 </div>
 
 <script>
