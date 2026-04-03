@@ -3,19 +3,7 @@
 <head>
 <title>CS2 Store</title>
 
-<style>.container {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
-.card {
-    background: #151515;
-    padding: 25px;
-    border-radius: 20px;
-    width: 240px;
-}
+<style>
 body {
     margin: 0;
     font-family: Arial;
@@ -23,18 +11,21 @@ body {
     color: white;
 }
 
-/* NAV */
+/* NAVBAR */
 nav {
-<button onclick="show('home')">Home</button>
-<button onclick="show('store')">Store</button>
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: #111;
+}
 
-/* LEFT */
+/* LEWO */
 .left {
     display: flex;
     gap: 15px;
 }
 
-/* RIGHT */
+/* PRAWO */
 .right {}
 
 /* BUTTONY */
@@ -57,12 +48,8 @@ button:hover {
     background: linear-gradient(135deg, #5865F2, #404EED);
 }
 
-.discord:hover {
-    box-shadow: 0 0 15px #5865F2;
-}
-
 /* STRONY */
-#home, #store {
+.page {
     display: none;
     padding: 60px 20px;
     text-align: center;
@@ -86,24 +73,20 @@ button:hover {
     border-radius: 20px;
     width: 240px;
     transition: 0.3s;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.03);
+    transform: translateY(-10px);
     box-shadow: 0 0 20px rgba(0,195,255,0.5);
 }
 
 .price {
     margin: 10px 0;
-    font-size: 18px;
 }
 
 .buy {
     background: linear-gradient(135deg, #00c3ff, #0066ff);
-    border-radius: 10px;
 }
-
 </style>
 
 </head>
@@ -112,8 +95,8 @@ button:hover {
 
 <nav>
     <div class="left">
-        <button onclick="showHome()">Home</button>
-        <button onclick="showStore()">Store</button>
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('store')">Store</button>
     </div>
 
     <div class="right">
@@ -124,13 +107,13 @@ button:hover {
 </nav>
 
 <!-- HOME -->
-<div id="home" class="active">
-    <h1>SourceSense</h1>
+<div id="home" class="page active">
+    <h1>CS2 Premium Cheats</h1>
     <p>Undetected • Smooth • High Performance</p>
 </div>
 
 <!-- STORE -->
-<div id="store">
+<div id="store" class="page">
     <h1>Our Products</h1>
 
     <div class="container">
@@ -155,27 +138,14 @@ button:hover {
 
     </div>
 </div>
-    <div class="card">
-        <h2>Premium</h2>
-        <p class="price">$29.99</p>
-        <button class="buy">Buy</button>
-    </div>
-
-</div>
 
 <script>
-function show(page) {
+function showPage(page) {
+    document.getElementById("home").classList.remove("active");
+    document.getElementById("store").classList.remove("active");
 
-    // ukryj wszystko
-    document.getElementById("home").style.display = "none";
-    document.getElementById("store").style.display = "none";
-
-    // pokaż wybraną zakładkę
-    document.getElementById(page).style.display = "block";
+    document.getElementById(page).classList.add("active");
 }
-
-// startowo pokaz HOME
-show("home");
 </script>
 
 </body>
