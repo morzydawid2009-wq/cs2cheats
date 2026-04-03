@@ -18,22 +18,17 @@ body {
 /* TŁO */
 .background {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e') center/cover no-repeat;
     filter: blur(8px);
     transform: scale(1.1);
     z-index: -2;
 }
-
 .overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background: rgba(0,0,0,0.7);
     z-index: -1;
 }
@@ -43,10 +38,12 @@ body {
     background: rgba(20,20,20,0.8);
     border-radius: 12px;
     padding: 50px;
-    width: 650px;
+    width: 90%;
+    max-width: 650px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(0,195,255,0.4);
     box-shadow: 0 0 30px rgba(0,195,255,0.4);
+    margin: auto;
 }
 
 /* TEXT */
@@ -58,7 +55,7 @@ p { font-size: 10px; }
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 15px 30px;
+    padding: 15px 20px;
     background: rgba(0,0,0,0.8);
     backdrop-filter: blur(10px);
     position: relative;
@@ -66,7 +63,6 @@ nav {
 }
 .left { display: flex; gap: 10px; }
 
-/* BUTTONY */
 button {
     padding: 8px 12px;
     border: 2px solid #00c3ff;
@@ -79,7 +75,6 @@ button {
     transition: 0.2s;
 }
 button:hover { background: #00c3ff; color: black; }
-
 .discord { background: linear-gradient(135deg, #5865F2, #404EED); border: none; color: white; }
 
 /* STRONY */
@@ -94,12 +89,7 @@ button:hover { background: #00c3ff; color: black; }
     pointer-events: none;
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
-.page.showing {
-    opacity: 1;
-    transform: translateX(0);
-    pointer-events: auto;
-    z-index: 2;
-}
+.page.showing { opacity: 1; transform: translateX(0); pointer-events: auto; z-index: 2; }
 
 /* Wyśrodkowanie panelu home */
 .home-page { display: flex; justify-content: center; align-items: center; }
@@ -108,26 +98,44 @@ button:hover { background: #00c3ff; color: black; }
 /* STORE */
 .container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-    padding-left: 20px;
-    margin-top: 20px;
+    padding: 20px;
 }
 .card {
     background: rgba(20,20,20,0.9);
     padding: 20px;
     border-radius: 8px;
     width: 220px;
-    transition: 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
     backdrop-filter: blur(8px);
     border: 2px solid #00c3ff;
     text-align: center;
 }
 .card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 0 20px #00c3ff;
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 0 25px #00c3ff;
 }
+
+/* POPRAWIONE LOGO */
+.product-logo-fixed {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: logoFadeIn 0.8s forwards;
+    filter: drop-shadow(0 0 10px #00c3ff);
+    transition: transform 0.3s, filter 0.3s;
+}
+.product-logo-fixed:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px #00c3ff);
+}
+@keyframes logoFadeIn { to { opacity:1; transform: translateY(0); } }
 
 .price { margin: 8px 0; }
 .buy { background: #00c3ff; color: black; border: 2px solid #0066ff; font-size: 10px; }
@@ -143,28 +151,7 @@ button:hover { background: #00c3ff; color: black; }
     z-index: 5;
 }
 #buyBox div {
-    background:#111; padding:30px; border-radius:12px; text-align:center; width:300px;
-}
-
-/* POPRAWIONE LOGO – zachowanie proporcji */
-.product-logo-fixed {
-    width: 140px;
-    height: 140px;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto 15px;
-    opacity: 0;
-    transform: translateY(-20px);
-    animation: logoFadeIn 0.8s forwards;
-    filter: drop-shadow(0 0 10px #00c3ff);
-    transition: 0.3s;
-}
-.product-logo-fixed:hover {
-    transform: scale(1.05);
-    filter: drop-shadow(0 0 20px #00c3ff);
-}
-@keyframes logoFadeIn {
-    to { opacity: 1; transform: translateY(0); }
+    background:#111; padding:30px; border-radius:12px; text-align:center; width:90%; max-width:300px;
 }
 
 /* KURSOR I CZĄSTECZKI */
@@ -185,11 +172,19 @@ button:hover { background: #00c3ff; color: black; }
     0% { transform: translate(0,0) scale(1); opacity:1; }
     100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity:0; }
 }
+
+/* RESPONSYWNOŚĆ */
+@media (max-width: 600px) {
+    .container { flex-direction: column; align-items: center; }
+    .card { width: 90%; }
+    .panel { padding: 30px; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 16px; }
+}
 </style>
 </head>
 
 <body>
-
 <div class="background"></div>
 <div class="overlay"></div>
 
@@ -215,7 +210,6 @@ button:hover { background: #00c3ff; color: black; }
     <h1>OUR PRODUCTS</h1>
     <div class="container">
         <div class="card">
-            <!-- NAPRAWIONE LOGO GameSense -->
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Gamesense_logo.png"
                  alt="GameSense Logo" class="product-logo-fixed">
             <h2>GAMESENSE RELEASE</h2>
@@ -255,15 +249,16 @@ document.addEventListener('mousemove', e => {
     cursor.style.top = e.clientY + 'px';
     const el = document.elementFromPoint(e.clientX, e.clientY);
     cursor.style.display = el && el.closest('button, a') ? 'none' : 'block';
+    
     const now = Date.now();
-    if (now - lastTime < 30) return;
+    if (now - lastTime < 50) return; // mniej cząsteczek
     lastTime = now;
     const p = document.createElement('div');
     p.className = 'particle';
     p.style.left = e.clientX+'px';
     p.style.top = e.clientY+'px';
-    const dx=(Math.random()-0.5)*120+'px';
-    const dy=(Math.random()-0.5)*120+'px';
+    const dx=(Math.random()-0.5)*80+'px';
+    const dy=(Math.random()-0.5)*80+'px';
     p.style.setProperty('--dx',dx);
     p.style.setProperty('--dy',dy);
     document.body.appendChild(p);
