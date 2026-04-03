@@ -16,26 +16,40 @@
 body {
     background: radial-gradient(circle at top, #111, #050505);
     color: white;
-    scroll-behavior: smooth;
 }
 
 /* NAVBAR */
 nav {
     display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
     background: rgba(20,20,20,0.7);
     backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
 }
 
+/* LEWA STRONA */
+.nav-left {
+    display: flex;
+    gap: 15px;
+}
+
+/* ŚRODEK */
+.nav-center {
+    display: flex;
+    gap: 30px;
+}
+
+/* PRAWA STRONA */
+.nav-right {
+}
+
+/* LINKI */
 nav a {
     color: #ccc;
     text-decoration: none;
-    cursor: pointer;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 nav a:hover {
@@ -46,22 +60,6 @@ nav a:hover {
 section {
     padding: 100px 20px;
     text-align: center;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease;
-}
-
-section.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* HERO */
-#home h1 {
-    font-size: 48px;
-    background: linear-gradient(90deg, #00c3ff, #0066ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 /* STORE */
@@ -79,34 +77,23 @@ section.show {
     border-radius: 20px;
     width: 260px;
     transition: 0.4s;
-    opacity: 0;
-    transform: translateY(50px);
-}
-
-.card.show {
-    opacity: 1;
-    transform: translateY(0);
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .card:hover {
     transform: translateY(-12px) scale(1.05);
-    box-shadow: 0 0 25px rgba(0,195,255,0.4);
+    box-shadow: 0 0 30px rgba(0,195,255,0.4);
+    border: 1px solid #00c3ff;
 }
 
 /* BUTTON */
 button {
     background: linear-gradient(135deg, #00c3ff, #0066ff);
     border: none;
-    padding: 12px 20px;
+    padding: 10px 20px;
     border-radius: 12px;
     color: white;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #00c3ff;
 }
 
 /* MODAL */
@@ -125,6 +112,7 @@ button:hover {
     padding: 30px;
     border-radius: 15px;
     width: 300px;
+    text-align: center;
 }
 
 input {
@@ -141,10 +129,22 @@ input {
 <body>
 
 <nav>
-    <a href="#home">Home</a>
-    <a href="#store">Store</a>
-    <a onclick="openLogin()">Login</a>
-    <a href="https://discord.gg/uBkNEQKHX" target="_blank">Discord</a>
+    <!-- LEWO -->
+    <div class="nav-left">
+        <a onclick="openLogin()">Login</a>
+        <a onclick="openRegister()">Register</a>
+    </div>
+
+    <!-- ŚRODEK -->
+    <div class="nav-center">
+        <a href="#home">Home</a>
+        <a href="#store">Store</a>
+    </div>
+
+    <!-- PRAWO -->
+    <div class="nav-right">
+        <a href="https://discord.gg/uBkNEQKHX" target="_blank">Discord</a>
+    </div>
 </nav>
 
 <section id="home">
@@ -153,26 +153,35 @@ input {
 </section>
 
 <section id="store">
-    <h1>Store</h1>
+    <h1 style="margin-bottom:40px;">Our Products</h1>
 
     <div class="container">
 
         <div class="card">
-            <h2>Basic Pack</h2>
-            <p>$9.99</p>
-            <button>Kup teraz</button>
+            <h2>Basic Access</h2>
+            <p style="color:#aaa; font-size:14px;">
+                Entry-level package with essential features for beginners.
+            </p>
+            <p class="price">$1.9</p>
+            <button>Buy Now</button>
+        </div>
+
+        <div class="card" style="border:1px solid #00c3ff;">
+            <h2>Pro Access</h2>
+            <p style="color:#aaa; font-size:14px;">
+                Advanced features, better performance and priority updates.
+            </p>
+            <p class="price">$19.99</p>
+            <button>Buy Now</button>
         </div>
 
         <div class="card">
-            <h2>Pro Pack</h2>
-            <p>$19.99</p>
-            <button>Kup teraz</button>
-        </div>
-
-        <div class="card">
-            <h2>Premium Pack</h2>
-            <p>$29.99</p>
-            <button>Kup teraz</button>
+            <h2>Premium Access</h2>
+            <p style="color:#aaa; font-size:14px;">
+                Full access to all features with best experience possible.
+            </p>
+            <p class="price">$29.99</p>
+            <button>Buy Now</button>
         </div>
 
     </div>
@@ -188,39 +197,32 @@ input {
     </div>
 </div>
 
+<!-- REGISTER -->
+<div class="modal" id="registerModal">
+    <div class="modal-content">
+        <h2>Register</h2>
+        <input type="text" placeholder="Login">
+        <input type="password" placeholder="Hasło">
+        <button onclick="closeRegister()">Zarejestruj</button>
+    </div>
+</div>
+
 <script>
-// LOGIN
 function openLogin() {
     document.getElementById("loginModal").style.display = "flex";
 }
+
 function closeLogin() {
     document.getElementById("loginModal").style.display = "none";
 }
 
-// ANIMACJE SCROLL
-const sections = document.querySelectorAll("section");
-const cards = document.querySelectorAll(".card");
+function openRegister() {
+    document.getElementById("registerModal").style.display = "flex";
+}
 
-window.addEventListener("scroll", () => {
-    const trigger = window.innerHeight * 0.85;
-
-    sections.forEach(sec => {
-        if (sec.getBoundingClientRect().top < trigger) {
-            sec.classList.add("show");
-        }
-    });
-
-    cards.forEach(card => {
-        if (card.getBoundingClientRect().top < trigger) {
-            card.classList.add("show");
-        }
-    });
-});
-
-// START ANIMACJI NA WEJŚCIU
-window.onload = () => {
-    document.querySelector("#home").classList.add("show");
-};
+function closeRegister() {
+    document.getElementById("registerModal").style.display = "none";
+}
 </script>
 
 </body>
