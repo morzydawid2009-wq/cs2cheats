@@ -12,7 +12,7 @@ body {
     background: #0d0d0d;
     color: white;
     overflow-x: hidden;
-    cursor: none; /* ukrywa standardowy kursor */
+    cursor: none;
 }
 
 /* TŁO */
@@ -50,20 +50,9 @@ body {
 }
 
 /* TEXT */
-h1 {
-    font-size: 32px;
-    text-shadow: 0 0 10px #00c3ff;
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-p {
-    font-size: 10px;
-}
+h1 { font-size: 32px; text-shadow: 0 0 10px #00c3ff; margin-bottom: 20px; }
+h2 { font-size: 18px; margin: 10px 0; }
+p { font-size: 10px; }
 
 /* NAVBAR */
 nav {
@@ -75,11 +64,7 @@ nav {
     position: relative;
     z-index: 2;
 }
-
-.left {
-    display: flex;
-    gap: 10px;
-}
+.left { display: flex; gap: 10px; }
 
 /* BUTTONY */
 button {
@@ -90,22 +75,14 @@ button {
     color: #00c3ff;
     font-family: 'Press Start 2P', monospace;
     font-size: 10px;
-    cursor: pointer; /* pokaże systemowy cursor na przyciskach */
+    cursor: pointer;
     transition: 0.2s;
 }
+button:hover { background: #00c3ff; color: black; }
 
-button:hover {
-    background: #00c3ff;
-    color: black;
-}
+.discord { background: linear-gradient(135deg, #5865F2, #404EED); border: none; color: white; }
 
-.discord {
-    background: linear-gradient(135deg, #5865F2, #404EED);
-    border: none;
-    color: white;
-}
-
-/* STRONY Z PŁYNNYM PRZEJŚCIEM */
+/* STRONY */
 .page {
     position: absolute;
     top: 60px;
@@ -117,7 +94,6 @@ button:hover {
     pointer-events: none;
     transition: opacity 0.4s ease, transform 0.4s ease;
 }
-
 .page.showing {
     opacity: 1;
     transform: translateX(0);
@@ -126,16 +102,8 @@ button:hover {
 }
 
 /* Wyśrodkowanie panelu home */
-.home-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.home-page .panel {
-    margin: 0;
-    text-align: center;
-}
+.home-page { display: flex; justify-content: center; align-items: center; }
+.home-page .panel { margin: 0; text-align: center; }
 
 /* STORE */
 .container {
@@ -146,7 +114,6 @@ button:hover {
     padding-left: 20px;
     margin-top: 20px;
 }
-
 .card {
     background: rgba(20,20,20,0.9);
     padding: 20px;
@@ -157,43 +124,26 @@ button:hover {
     border: 2px solid #00c3ff;
     text-align: center;
 }
-
 .card:hover {
     transform: translateY(-6px) scale(1.02);
     box-shadow: 0 0 20px #00c3ff;
 }
 
-.price {
-    margin: 8px 0;
-}
-
-.buy {
-    background: #00c3ff;
-    color: black;
-    border: 2px solid #0066ff;
-    font-size: 10px;
-}
+.price { margin: 8px 0; }
+.buy { background: #00c3ff; color: black; border: 2px solid #0066ff; font-size: 10px; }
 
 /* BUY BOX */
 #buyBox {
     display:none;
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    top:0; left:0; width:100%; height:100%;
     background:rgba(0,0,0,0.8);
     justify-content:center;
     align-items:center;
     z-index: 5;
 }
-
 #buyBox div {
-    background:#111;
-    padding:30px;
-    border-radius:12px;
-    text-align:center;
-    width:300px;
+    background:#111; padding:30px; border-radius:12px; text-align:center; width:300px;
 }
 
 /* LOGO PRODUKTU */
@@ -204,42 +154,35 @@ button:hover {
     margin: 0 auto 15px;
     filter: drop-shadow(0 0 10px #00c3ff);
     transition: 0.3s;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: logoFadeIn 0.8s forwards;
 }
-
 .product-logo:hover {
     transform: scale(1.05);
     filter: drop-shadow(0 0 20px #00c3ff);
 }
+@keyframes logoFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
 
 /* KURSOR I CZĄSTECZKI */
 .cursor {
-    position: fixed;
-    width: 12px;
-    height: 12px;
-    background: #00c3ff;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    box-shadow: 0 0 10px #00c3ff, 0 0 20px #00c3ff;
+    position: fixed; width: 12px; height: 12px;
+    background: #00c3ff; border-radius: 50%;
+    pointer-events: none; transform: translate(-50%, -50%);
+    z-index: 9999; box-shadow: 0 0 10px #00c3ff, 0 0 20px #00c3ff;
 }
-
 .particle {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    background: #00ffdd;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    opacity: 1;
+    position: fixed; width: 6px; height: 6px;
+    background: #00ffdd; border-radius: 50%;
+    pointer-events: none; z-index: 9998; opacity: 1;
     box-shadow: 0 0 8px #00ffdd, 0 0 15px #00ffdd;
     animation: particleAnim 0.6s forwards;
 }
-
 @keyframes particleAnim {
-    0% { transform: translate(0, 0) scale(1); opacity: 1; }
-    100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+    0% { transform: translate(0,0) scale(1); opacity:1; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0); opacity:0; }
 }
 </style>
 </head>
@@ -254,11 +197,8 @@ button:hover {
         <button onclick="showPage('home')">HOME</button>
         <button onclick="showPage('store')">STORE</button>
     </div>
-
     <div>
-        <button class="discord" onclick="window.open('https://discord.gg/uBkNEQKHX')">
-            DISCORD
-        </button>
+        <button class="discord" onclick="window.open('https://discord.gg/uBkNEQKHX')">DISCORD</button>
     </div>
 </nav>
 
@@ -272,24 +212,20 @@ button:hover {
 
 <div id="store" class="page store-page">
     <h1>OUR PRODUCTS</h1>
-
     <div class="container">
         <div class="card">
-            <!-- LOGO GameSense nad pierwszym produktem -->
+            <!-- LOGO GameSense z animacją -->
             <img src="https://gamesense.gg/cdn/shop/files/gamesense-logo_PNG_9316ec1d-7a16-4f57-ad96-e8c1d1a67711_1200x1200.png?v=1631953877" 
-                 alt="GameSense Logo" 
-                 class="product-logo">
+                 alt="GameSense Logo" class="product-logo">
             <h2>GAMESENSE RELEASE</h2>
             <p class="price">$2.00</p>
             <button class="buy" onclick="window.open('https://buy.stripe.com/test_9B6cN50UcaCN6JS7bW0co00')">BUY</button>
         </div>
-
         <div class="card">
             <h2>PRO</h2>
             <p class="price">$19.99</p>
             <button class="buy" onclick="openBuy('Pro', '$19.99')">BUY</button>
         </div>
-
         <div class="card">
             <h2>PREMIUM</h2>
             <p class="price">$29.99</p>
@@ -302,7 +238,6 @@ button:hover {
     <div>
         <h2 id="productName"></h2>
         <p id="productPrice"></p>
-
         <button onclick="buyNow()">BUY NOW</button>
         <br><br>
         <button onclick="closeBuy()">CANCEL</button>
@@ -315,59 +250,39 @@ button:hover {
 <script>
 const cursor = document.getElementById('cursor');
 let lastTime = 0;
-
 document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
-
     const el = document.elementFromPoint(e.clientX, e.clientY);
-    if(el && el.closest('button, a')) {
-        cursor.style.display = 'none';
-    } else {
-        cursor.style.display = 'block';
-    }
-
+    cursor.style.display = el && el.closest('button, a') ? 'none' : 'block';
     const now = Date.now();
     if (now - lastTime < 30) return;
     lastTime = now;
-
     const p = document.createElement('div');
     p.className = 'particle';
-    p.style.left = e.clientX + 'px';
-    p.style.top = e.clientY + 'px';
-    const dx = (Math.random() - 0.5) * 120 + 'px';
-    const dy = (Math.random() - 0.5) * 120 + 'px';
-    p.style.setProperty('--dx', dx);
-    p.style.setProperty('--dy', dy);
-
+    p.style.left = e.clientX+'px';
+    p.style.top = e.clientY+'px';
+    const dx=(Math.random()-0.5)*120+'px';
+    const dy=(Math.random()-0.5)*120+'px';
+    p.style.setProperty('--dx',dx);
+    p.style.setProperty('--dy',dy);
     document.body.appendChild(p);
-    setTimeout(() => p.remove(), 600);
+    setTimeout(()=>p.remove(),600);
 });
 
 function showPage(pageId) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(p => {
-        if (p.id === pageId) {
-            p.classList.add('showing');
-        } else {
-            p.classList.remove('showing');
-        }
+    document.querySelectorAll('.page').forEach(p=>{
+        p.id===pageId?p.classList.add('showing'):p.classList.remove('showing');
     });
 }
 
-function openBuy(name, price) {
-    document.getElementById("buyBox").style.display = "flex";
-    document.getElementById("productName").innerText = name;
-    document.getElementById("productPrice").innerText = price;
+function openBuy(name, price){
+    document.getElementById("buyBox").style.display="flex";
+    document.getElementById("productName").innerText=name;
+    document.getElementById("productPrice").innerText=price;
 }
-
-function closeBuy() {
-    document.getElementById("buyBox").style.display = "none";
-}
-
-function buyNow() {
-    alert("Purchase successful (fake)");
-}
+function closeBuy(){document.getElementById("buyBox").style.display="none";}
+function buyNow(){alert("Purchase successful (fake)");}
 </script>
 
 </body>
