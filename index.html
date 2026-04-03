@@ -3,7 +3,6 @@
 <head>
 <title>CS2 Store</title>
 
-<!-- Minecraft-style font -->
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
@@ -47,7 +46,6 @@ body {
     backdrop-filter: blur(10px);
     border: 2px solid rgba(0,195,255,0.4);
     box-shadow: 0 0 30px rgba(0,195,255,0.4);
-    margin: 0; /* usuwamy margin */
 }
 
 /* TEXT */
@@ -111,10 +109,10 @@ button:hover {
     display: none;
     position: relative;
     z-index: 2;
-    height: calc(100vh - 60px); /* wysokość navbaru */
+    height: 100vh; /* pełna wysokość ekranu */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* poziome wyśrodkowanie */
+    align-items: center;     /* pionowe wyśrodkowanie */
 }
 
 .active {
