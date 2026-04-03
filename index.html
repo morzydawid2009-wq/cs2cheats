@@ -44,7 +44,6 @@ body {
     border-radius: 12px;
     padding: 50px;
     width: 650px;
-    margin: 80px auto;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(0,195,255,0.4);
     box-shadow: 0 0 30px rgba(0,195,255,0.4);
@@ -52,7 +51,7 @@ body {
 
 /* TEXT */
 h1 {
-    font-size: 32px; /* Minecraft font jest mały, nie używaj 40px */
+    font-size: 32px; 
     text-shadow: 0 0 10px #00c3ff;
     margin-bottom: 20px;
 }
@@ -109,14 +108,16 @@ button:hover {
 /* STRONY */
 .page {
     display: none;
-    padding: 60px 20px;
-    text-align: center;
     position: relative;
     z-index: 2;
+    height: calc(100vh - 60px); /* minus wysokość nav */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .active {
-    display: block;
+    display: flex;
 }
 
 /* STORE */
