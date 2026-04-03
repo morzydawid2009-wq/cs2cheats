@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Store</title>
+<title>Premium Store</title>
 
 <style>
 body {
@@ -12,27 +12,31 @@ body {
     color: white;
 }
 
-/* NAV */
+/* NAVBAR */
 nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
     background: #111;
     padding: 15px;
-    text-align: center;
 }
 
 nav button {
-    margin: 10px;
-    padding: 10px 20px;
-    background: #00c3ff;
+    background: none;
     border: none;
-    color: white;
+    color: #ccc;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 10px;
+}
+
+nav button:hover {
+    color: #00c3ff;
 }
 
 /* SEKCJE */
-#home, #store {
+.page {
     display: none;
-    padding: 60px 20px;
+    padding: 80px 20px;
     text-align: center;
 }
 
@@ -44,20 +48,21 @@ nav button {
 .container {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
     flex-wrap: wrap;
 }
 
 .card {
     background: #151515;
-    padding: 20px;
+    padding: 25px;
     border-radius: 15px;
-    width: 220px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    width: 240px;
+    transition: 0.3s;
 }
 
-.card h2 {
-    margin-bottom: 10px;
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0,195,255,0.5);
 }
 
 .price {
@@ -65,7 +70,7 @@ nav button {
     font-size: 18px;
 }
 
-.buy {
+button.buy {
     background: linear-gradient(135deg, #00c3ff, #0066ff);
     border: none;
     padding: 10px;
@@ -79,22 +84,21 @@ nav button {
 <body>
 
 <nav>
-    <button onclick="showHome()">Home</button>
-    <button onclick="showStore()">Store</button>
+    <button onclick="show('home')">Home</button>
+    <button onclick="show('store')">Store</button>
 </nav>
 
 <!-- HOME -->
-<div id="home" class="active">
+<div id="home" class="page active">
     <h1>Premium Digital Store</h1>
-    <p>Welcome to a modern digital store.</p>
+    <p>Welcome to a modern digital store with smooth design and fast access.</p>
 </div>
 
 <!-- STORE -->
-<div id="store">
+<div id="store" class="page">
     <h1>Our Products</h1>
 
     <div class="container">
-
         <div class="card">
             <h2>Basic</h2>
             <p class="price">$9.99</p>
@@ -112,19 +116,15 @@ nav button {
             <p class="price">$29.99</p>
             <button class="buy">Buy</button>
         </div>
-
     </div>
 </div>
 
 <script>
-function showHome() {
-    document.getElementById("home").classList.add("active");
-    document.getElementById("store").classList.remove("active");
-}
-
-function showStore() {
-    document.getElementById("store").classList.add("active");
+function show(page) {
     document.getElementById("home").classList.remove("active");
+    document.getElementById("store").classList.remove("active");
+
+    document.getElementById(page).classList.add("active");
 }
 </script>
 
