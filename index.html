@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <title>Store</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial;
-    background: black;
+    background: #0d0d0d;
     color: white;
 }
 
+/* NAV */
 nav {
     background: #111;
     padding: 15px;
@@ -18,15 +20,19 @@ nav {
 }
 
 nav button {
-    margin: 5px;
-    padding: 10px;
+    margin: 10px;
+    padding: 10px 20px;
+    background: #00c3ff;
+    border: none;
+    color: white;
     cursor: pointer;
+    border-radius: 10px;
 }
 
-/* strony */
+/* SEKCJE */
 #home, #store {
     display: none;
-    padding: 40px;
+    padding: 60px 20px;
     text-align: center;
 }
 
@@ -34,46 +40,89 @@ nav button {
     display: block;
 }
 
-/* produkty */
+/* STORE */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
 .card {
-    background: #222;
+    background: #151515;
     padding: 20px;
-    margin: 10px;
+    border-radius: 15px;
+    width: 220px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.price {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.buy {
+    background: linear-gradient(135deg, #00c3ff, #0066ff);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
 }
 </style>
-
 </head>
 
 <body>
 
 <nav>
-    <button onclick="home()">Home</button>
-    <button onclick="store()">Store</button>
+    <button onclick="showHome()">Home</button>
+    <button onclick="showStore()">Store</button>
 </nav>
 
 <!-- HOME -->
 <div id="home" class="active">
-    <h1>HOME</h1>
-    <p>tu NIE MA produktów</p>
+    <h1>Premium Digital Store</h1>
+    <p>Welcome to a modern digital store.</p>
 </div>
 
 <!-- STORE -->
 <div id="store">
-    <h1>STORE</h1>
+    <h1>Our Products</h1>
 
-    <div class="card">Basic - $9.99</div>
-    <div class="card">Pro - $19.99</div>
-    <div class="card">Premium - $29.99</div>
+    <div class="container">
 
+        <div class="card">
+            <h2>Basic</h2>
+            <p class="price">$9.99</p>
+            <button class="buy">Buy</button>
+        </div>
+
+        <div class="card">
+            <h2>Pro</h2>
+            <p class="price">$19.99</p>
+            <button class="buy">Buy</button>
+        </div>
+
+        <div class="card">
+            <h2>Premium</h2>
+            <p class="price">$29.99</p>
+            <button class="buy">Buy</button>
+        </div>
+
+    </div>
 </div>
 
 <script>
-function home() {
+function showHome() {
     document.getElementById("home").classList.add("active");
     document.getElementById("store").classList.remove("active");
 }
 
-function store() {
+function showStore() {
     document.getElementById("store").classList.add("active");
     document.getElementById("home").classList.remove("active");
 }
