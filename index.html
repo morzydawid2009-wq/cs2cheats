@@ -104,35 +104,35 @@ button:hover {
     color: white;
 }
 
-/* STRONY */
+/* STRONY Z PRZEJŚCIEM */
 .page {
-    display: none;
-    position: relative;
-    z-index: 2;
-    padding: 60px 20px 20px 20px;
-    text-align: left;
+    position: absolute;
+    top: 60px; /* pod navbar */
+    left: 0;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease; /* płynne zanikanie/pojawianie */
 }
 
-/* Aktywna strona */
 .page.active {
-    display: block;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 /* Wyśrodkowanie tylko dla home */
-.home-page.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 60px); /* minus navbar */
+.home-page .panel {
+    margin: 100px auto 0 auto;
 }
 
 /* STORE */
 .container {
     display: flex;
-    justify-content: flex-start; /* wyrównanie do lewej */
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 20px;
-    padding-left: 20px; /* margines od lewej */
+    padding-left: 20px;
     margin-top: 20px;
 }
 
@@ -248,9 +248,14 @@ button:hover {
 </div>
 
 <script>
-function showPage(page) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.getElementById(page).classList.add('active');
+function showPage(pageId) {
+    document.querySelectorAll('.page').forEach(p => {
+        if (p.id === pageId) {
+            p.classList.add('active');
+        } else {
+            p.classList.remove('active');
+        }
+    });
 }
 
 function openBuy(name, price) {
