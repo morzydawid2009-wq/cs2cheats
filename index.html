@@ -109,7 +109,8 @@ button:hover {
     display: none;
     position: relative;
     z-index: 2;
-    padding: 60px 20px;
+    padding: 60px 20px 20px 20px;
+    text-align: left;
 }
 
 /* Aktywna strona */
@@ -132,7 +133,7 @@ button:hover {
     flex-wrap: wrap;
     gap: 20px;
     padding-left: 20px; /* margines od lewej */
-    margin-top: 20px; /* odstęp od napisu OUR PRODUCTS */
+    margin-top: 20px;
 }
 
 .card {
@@ -159,6 +160,28 @@ button:hover {
     color: black;
     border: 2px solid #0066ff;
     font-size: 10px;
+}
+
+/* BUY BOX */
+#buyBox {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+    justify-content:center;
+    align-items:center;
+    z-index: 5;
+}
+
+#buyBox div {
+    background:#111;
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+    width:300px;
 }
 </style>
 </head>
@@ -213,42 +236,20 @@ button:hover {
     </div>
 </div>
 
-<div id="buyBox" style="
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-justify-content:center;
-align-items:center;
-z-index: 5;
-">
-
-    <div style="
-    background:#111;
-    padding:30px;
-    border-radius:12px;
-    text-align:center;
-    width:300px;
-    ">
-
+<div id="buyBox">
+    <div>
         <h2 id="productName"></h2>
         <p id="productPrice"></p>
 
         <button onclick="buyNow()">BUY NOW</button>
         <br><br>
         <button onclick="closeBuy()">CANCEL</button>
-
     </div>
 </div>
 
 <script>
 function showPage(page) {
-    // Ukryj wszystkie strony
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    // Pokaż wybraną stronę
     document.getElementById(page).classList.add('active');
 }
 
