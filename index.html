@@ -109,6 +109,7 @@ button:hover {
     display: none;
     position: relative;
     z-index: 2;
+    padding: 60px 20px;
 }
 
 /* Wyśrodkowanie tylko dla home */
@@ -119,11 +120,8 @@ button:hover {
     height: calc(100vh - 60px); /* minus navbar */
 }
 
-.active.home-page {
-    display: flex;
-}
-
-.active.store-page {
+/* Aktywna strona */
+.page.active {
     display: block;
 }
 
@@ -246,18 +244,10 @@ z-index: 5;
 
 <script>
 function showPage(page) {
-    const home = document.getElementById('home');
-    const store = document.getElementById('store');
+    document.getElementById('home').classList.remove('active');
+    document.getElementById('store').classList.remove('active');
 
-    if (page === 'home') {
-        home.classList.add('active');
-        home.classList.add('home-page');
-        store.classList.remove('active');
-    } else if (page === 'store') {
-        store.classList.add('active');
-        store.classList.add('store-page');
-        home.classList.remove('active');
-    }
+    document.getElementById(page).classList.add('active');
 }
 
 function openBuy(name, price) {
