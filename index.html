@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<p style="color:#00ff88;">● Status: Undetected</p>
 <head>
 <title>CS2 Store</title>
 
@@ -10,43 +9,48 @@ body {
     font-family: Arial;
     background: #0d0d0d;
     color: white;
+    overflow-x: hidden;
 }
+
+/* TŁO */
 .background {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: url('https://images.unsplash.com/photo-1542751371-adc38448a05e') center/cover no-repeat;
     filter: blur(8px);
+    transform: scale(1.1);
     z-index: -2;
 }
 
 .overlay {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.7);
     z-index: -1;
 }
+
+/* PANEL */
 .panel {
     background: rgba(20,20,20,0.6);
     border-radius: 20px;
     padding: 40px;
     width: 600px;
     margin: 80px auto;
-
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255,255,255,0.1);
-
     box-shadow: 0 0 40px rgba(0,195,255,0.2);
 }
+
+/* TEXT */
 h1 {
     font-size: 40px;
-    letter-spacing: 1px;
     text-shadow: 0 0 20px rgba(0,195,255,0.8);
-}
-.card:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 0 25px rgba(0,195,255,0.6);
 }
 
 /* NAVBAR */
@@ -54,17 +58,16 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 15px 30px;
-    background: #111;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
 }
 
-/* LEWO */
 .left {
     display: flex;
     gap: 15px;
 }
-
-/* PRAWO */
-.right {}
 
 /* BUTTONY */
 button {
@@ -81,7 +84,6 @@ button:hover {
     background: #00c3ff;
 }
 
-/* DISCORD */
 .discord {
     background: linear-gradient(135deg, #5865F2, #404EED);
 }
@@ -91,6 +93,8 @@ button:hover {
     display: none;
     padding: 60px 20px;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .active {
@@ -106,16 +110,17 @@ button:hover {
 }
 
 .card {
-    background: #151515;
+    background: rgba(20,20,20,0.7);
     padding: 25px;
     border-radius: 20px;
     width: 240px;
     transition: 0.3s;
+    backdrop-filter: blur(10px);
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px rgba(0,195,255,0.5);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 25px rgba(0,195,255,0.6);
 }
 
 .price {
@@ -126,18 +131,22 @@ button:hover {
     background: linear-gradient(135deg, #00c3ff, #0066ff);
 }
 </style>
-
 </head>
 
 <body>
 
+<!-- TŁO -->
+<div class="background"></div>
+<div class="overlay"></div>
+
+<!-- NAV -->
 <nav>
     <div class="left">
         <button onclick="showPage('home')">Home</button>
         <button onclick="showPage('store')">Store</button>
     </div>
 
-    <div class="right">
+    <div>
         <button class="discord" onclick="window.open('https://discord.gg/uBkNEQKHX')">
             Discord
         </button>
@@ -146,8 +155,11 @@ button:hover {
 
 <!-- HOME -->
 <div id="home" class="page active">
-    <h1>CS2 Premium Cheats</h1>
-    <p>Undetected • Smooth • High Performance</p>
+    <div class="panel">
+        <h1>CS2 Premium Cheats</h1>
+        <p>Undetected • Smooth • High Performance</p>
+        <p style="color:#00ff88;">● Status: Undetected</p>
+    </div>
 </div>
 
 <!-- STORE -->
@@ -176,6 +188,8 @@ button:hover {
 
     </div>
 </div>
+
+<!-- BUY BOX -->
 <div id="buyBox" style="
 display:none;
 position:fixed;
@@ -186,6 +200,7 @@ height:100%;
 background:rgba(0,0,0,0.8);
 justify-content:center;
 align-items:center;
+z-index: 5;
 ">
 
     <div style="
@@ -205,14 +220,14 @@ align-items:center;
 
     </div>
 </div>
+
 <script>
 function showPage(page) {
     document.getElementById("home").classList.remove("active");
     document.getElementById("store").classList.remove("active");
-
     document.getElementById(page).classList.add("active");
 }
-</script><script>
+
 function openBuy(name, price) {
     document.getElementById("buyBox").style.display = "flex";
     document.getElementById("productName").innerText = name;
@@ -230,11 +245,3 @@ function buyNow() {
 
 </body>
 </html>
-<div class="background"></div>
-<div class="overlay"></div>
-<div id="home" class="page active">
-    <div class="panel">
-        <h1>CS2 Premium Cheats</h1>
-        <p>Undetected • Smooth • High Performance</p>
-    </div>
-</div>
