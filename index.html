@@ -1,103 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Store</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial;
-    background: #0d0d0d;
+    background: black;
     color: white;
 }
 
-/* NAV */
 nav {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 20px;
     background: #111;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* SEKCJE */
-section {
-    display: none;
-    padding: 80px 20px;
+    padding: 15px;
     text-align: center;
 }
 
-/* AKTYWNA SEKCJA */
+nav button {
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* strony */
+#home, #store {
+    display: none;
+    padding: 40px;
+    text-align: center;
+}
+
 .active {
     display: block;
 }
 
-/* STORE */
-.container {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
-}
-
+/* produkty */
 .card {
-    background: #151515;
-    padding: 25px;
-    border-radius: 20px;
-    width: 250px;
+    background: #222;
+    padding: 20px;
+    margin: 10px;
 }
 </style>
+
 </head>
 
 <body>
 
 <nav>
-    <a onclick="showPage('home')">Home</a>
-    <a onclick="showPage('store')">Store</a>
+    <button onclick="home()">Home</button>
+    <button onclick="store()">Store</button>
 </nav>
 
-<!-- HOME (ZERO PRODUKTÓW) -->
-<section id="home" class="active">
-    <h1>Home</h1>
-    <p>This is homepage. No products here.</p>
-</section>
+<!-- HOME -->
+<div id="home" class="active">
+    <h1>HOME</h1>
+    <p>tu NIE MA produktów</p>
+</div>
 
-<!-- STORE (TYLKO TU PRODUKTY) -->
-<section id="store">
-    <h1>Our Products</h1>
+<!-- STORE -->
+<div id="store">
+    <h1>STORE</h1>
 
-    <div class="container">
-        <div class="card">
-            <h2>Basic</h2>
-            <p>$9.99</p>
-        </div>
+    <div class="card">Basic - $9.99</div>
+    <div class="card">Pro - $19.99</div>
+    <div class="card">Premium - $29.99</div>
 
-        <div class="card">
-            <h2>Pro</h2>
-            <p>$19.99</p>
-        </div>
-
-        <div class="card">
-            <h2>Premium</h2>
-            <p>$29.99</p>
-        </div>
-    </div>
-</section>
+</div>
 
 <script>
-function showPage(page) {
-    document.getElementById("home").classList.remove("active");
+function home() {
+    document.getElementById("home").classList.add("active");
     document.getElementById("store").classList.remove("active");
+}
 
-    document.getElementById(page).classList.add("active");
+function store() {
+    document.getElementById("store").classList.add("active");
+    document.getElementById("home").classList.remove("active");
 }
 </script>
 
