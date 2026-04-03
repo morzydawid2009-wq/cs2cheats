@@ -167,15 +167,18 @@ button:hover {
 </div>
 
 <script>
-function showHome() {
-    document.getElementById("home").classList.add("active");
-    document.getElementById("store").classList.remove("active");
+function show(page) {
+
+    // ukryj wszystko
+    document.getElementById("home").style.display = "none";
+    document.getElementById("store").style.display = "none";
+
+    // pokaż wybraną zakładkę
+    document.getElementById(page).style.display = "block";
 }
 
-function showStore() {
-    document.getElementById("store").classList.add("active");
-    document.getElementById("home").classList.remove("active");
-}
+// startowo pokaz HOME
+show("home");
 </script>
 
 </body>
