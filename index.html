@@ -112,17 +112,17 @@ button:hover {
     padding: 60px 20px;
 }
 
+/* Aktywna strona */
+.page.active {
+    display: block;
+}
+
 /* Wyśrodkowanie tylko dla home */
-.home-page {
+.home-page.active {
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(100vh - 60px); /* minus navbar */
-}
-
-/* Aktywna strona */
-.page.active {
-    display: block;
 }
 
 /* STORE */
@@ -244,9 +244,9 @@ z-index: 5;
 
 <script>
 function showPage(page) {
-    document.getElementById('home').classList.remove('active');
-    document.getElementById('store').classList.remove('active');
-
+    // Ukryj wszystkie strony
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    // Pokaż wybraną stronę
     document.getElementById(page).classList.add('active');
 }
 
